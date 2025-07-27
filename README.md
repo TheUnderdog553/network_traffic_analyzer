@@ -1,71 +1,80 @@
+# Network Traffic Analyzer
 
-# Network Analyzer
-
-Network Analyzer is a command-line application that analyzes network traffic data captured in CSV format. It offers functionalities such as displaying data, building and visualizing network graphs, tracing suspected addresses, and finding the geolocation of public IP addresses. This application is designed to work on Windows OS.
+A Python-based network traffic analysis tool that can analyze CSV files exported from Wireshark or other network packet capture tools.
 
 ## Features
 
-- Show Data: View and analyze traffic data from the CSV file.
-- Build Graphs: Generate and display network graphs and bar charts based on traffic data.
-- Trace Suspected Address**: Identify and analyze traffic related to a specific suspected address.
-- Find Public IP Address GeoLocation: Determine the geographical location of a public IP address using the GeoIP2 database.
+- **Data Analysis**: View network traffic data, source/destination counts, and protocol statistics
+- **Graph Visualization**: Create network graphs and protocol-based bar charts
+- **Suspect Tracing**: Trace specific IP addresses in the network traffic
+- **Geolocation**: Find the country location of public IP addresses (requires GeoLite2 database)
 
-## Prerequisites
+## Installation
 
-Before running the application, ensure you have the following:
-
-1. Python: Version 3.x installed on your system.
-2. Required Libraries: Install the necessary Python libraries using pip:
-
+1. **Install Python dependencies:**
    ```bash
-   pip install pandas matplotlib networkx pyvis geoip2 pyfiglet
+   pip install -r requirements.txt
    ```
 
-3. GeoIP2 Database: Download and place the `GeoLite2-Country.mmdb` file in the same directory as the script. This file is used for geolocation lookups.
+2. **Download GeoLite2 Database (Optional):**
+   - For geolocation features, download the GeoLite2-Country.mmdb file
+   - Place it in the same directory as the script
+   - You can download it from MaxMind (free registration required)
 
 ## Usage
 
-1. Start the Application: Run the `network_analyzer.py` script to start the application.
-
+1. **Run the program:**
    ```bash
-   python network_analyzer.py
+   python NetworyAnalyzer.py
    ```
 
-2. Menu Options:
-   - **1. Start**: Load a CSV file with network traffic data and access various analysis features.
-   - **2. About**: View information about the application and the developer.
-   - **3. Exit**: Close the application.
+2. **Load your CSV file:**
+   - The program expects CSV files exported from Wireshark
+   - Required columns: "No.", "Time", "Source", "Destination", "Protocol", "Length", "Info"
+   - Enter the full path to your CSV file when prompted
 
-3. Data Analysis:
-   - Show Data: View the first 10 readings, source and destination counts, protocols and counts, or traffic of a specific protocol.
-   - Build Graphs: Display network node views, edge views, network maps, or bar graphs of protocols.
-   - Trace Suspected Address: Input a suspected address to view related traffic and visualize connections.
-   - Find Public IP Address GeoLocation: Enter a public IP address to determine its geographical location.
+3. **Navigate the menu:**
+   - **Show Data**: View traffic statistics and protocol information
+   - **Build Graphs**: Create network visualizations and charts
+   - **Trace Suspected Address**: Analyze specific IP addresses
+   - **Geolocation**: Find country information for public IPs
+
+## CSV Format
+
+The program expects CSV files with the following columns:
+- No.: Packet number
+- Time: Timestamp
+- Source: Source IP address
+- Destination: Destination IP address
+- Protocol: Network protocol (TCP, UDP, DNS, etc.)
+- Length: Packet length
+- Info: Additional packet information
+
+## Cross-Platform Support
+
+The program now works on:
+- Windows
+- Linux
+- macOS
+
+## Dependencies
+
+- pandas: Data manipulation and analysis
+- matplotlib: Plotting and visualization
+- networkx: Network graph creation and analysis
+- geoip2: IP geolocation (optional)
+- pyfiglet: ASCII art banner
+- pyvis: Interactive network visualization
 
 ## Troubleshooting
 
-- File Not Found: Ensure the CSV file path is correct and accessible.
-- Permission Error: Run the application with the necessary permissions if encountering file access issues.
-- Invalid Input: Follow the input prompts carefully to avoid errors.
+1. **Missing dependencies**: Run `pip install -r requirements.txt`
+2. **CSV format errors**: Ensure your CSV has the required columns
+3. **Geolocation not working**: Download and place the GeoLite2-Country.mmdb file
+4. **Graph display issues**: Ensure you have a display environment (for matplotlib)
 
-## Example
+## Author
 
-Here is an example of using the application:
-
-1. Start the application and choose option `1` to begin network analysis.
-2. Enter the complete path to your CSV file.
-3. Navigate through the menu options to analyze data, build graphs, trace addresses, or find geolocation.
-
-## License
-
-This application is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contact
-
-- **Developer: Priyanshu Singh
-- GitHub: [TheUnderdog553](https://github.com/TheUnderdog553)
-- LinkedIn: [Priyanshu Singh](https://www.linkedin.com/in/priyanshu-singh-a50a22265)
-
----
-
-Feel free to adjust the content based on your specific needs and any additional information you'd like to include!
+Created by Priyanshu Singh
+- GitHub: https://github.com/TheUnderdog553
+- LinkedIn: www.linkedin.com/in/priyanshu-singh-a50a22265 
